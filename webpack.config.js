@@ -1,8 +1,8 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
-const { getIfUtils } = require('webpack-config-utils');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const DashboardPluginConfig = new DashboardPlugin();
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -10,12 +10,13 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body'
 });
+const ExtractTextPluginConfig = new ExtractTextPlugin('[name].bundle.css');
 
 let config = (env = {}) => {
 
 	// Define common enivronment settings
-	entryConfig = ["./index.js"];
-	pluginsConfig = [HtmlWebpackPluginConfig];
+	entryConfig = ["./index.js", "./scss/main.scss"];
+	pluginsConfig = [HtmlWebpackPluginConfig, ExtractTextPluginConfig];
 
 	if (env.production === undefined) {
 		// Add Dev Environment Config
@@ -43,6 +44,18 @@ let config = (env = {}) => {
 	          resolve(__dirname, "node_modules")
 	        ],
 	        loader: "babel-loader"
+	      },
+	      { 
+	        test: /\.css$/,
+	        use: ExtractTextPlugin.extract({
+	        	use: "css-loader"
+	        })
+	      },
+	      { 
+	        test: /\.(sass|scss)$/,
+	        use: ExtractTextPlugin.extract({
+	        	use: ['css-loader', 'sass-loader']
+	        })
 	      }
 			]
 		},
