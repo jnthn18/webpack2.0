@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { Route } from 'react-router'
+import { ConnectedRouter, push } from 'react-router-redux'
+import configureStore, { history } from './store/configureStore'
+import Home from './Home'
 
-export default class App extends Component {
-	render() {
-		return (
-			<h1>Hello World!</h1>
-		)
-	}
-}
+const store = configureStore()
 
-ReactDOM.render(<App />, document.getElementById('root'))
+render(
+	<Provider store={store}>
+		<ConnectedRouter history={history}>
+			<div>
+				<Route exact path="/" component={Home} />
+			</div>
+		</ConnectedRouter>
+	</Provider>, 
+	document.getElementById('root')
+)

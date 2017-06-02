@@ -14,9 +14,14 @@ const ExtractTextPluginConfig = new ExtractTextPlugin('[name].bundle.css');
 
 let config = (env = {}) => {
 
+	const WebpackPluginConfig = new webpack.DefinePlugin({
+	  // Definitions...
+	  __DEV__: JSON.stringify(env.production === undefined)
+	})
+
 	// Define common enivronment settings
 	entryConfig = ["./index.js", "./scss/main.scss"];
-	pluginsConfig = [HtmlWebpackPluginConfig, ExtractTextPluginConfig];
+	pluginsConfig = [HtmlWebpackPluginConfig, ExtractTextPluginConfig, WebpackPluginConfig];
 
 	if (env.production === undefined) {
 		// Add Dev Environment Config
