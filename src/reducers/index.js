@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux'
-import home, * as fromHome from './homeReducer'
+import login, * as fromLogin from './loginReducer'
+import restricted, * as fromRestricted from './restrictedReducer'
 
 export default combineReducers({
-  home,
+	login,
+  restricted
 })
 
-export const getHome = ({home}) => home
+export const getLogin = ({login}) => login
+export const getRestricted = ({restricted}) => restricted

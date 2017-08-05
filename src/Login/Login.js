@@ -2,6 +2,8 @@ import React from 'react'
 
 export default (props) => {
 	return (
-		<h1>Hello World!</h1>
+		<div>
+			<h1>Login</h1>
+		</div>
 	)
 }
