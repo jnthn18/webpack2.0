@@ -14,6 +14,7 @@ module.exports = {
       'react-hot-loader',
       'react-router-dom',
       'redux-thunk',
+      'redux-logger',
       'reselect',
     ]
   },
