@@ -56,7 +56,7 @@ export const actions = {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [LOGIN_REQUEST]    : (state, action) => {
+  [LOGIN_REQUEST] : (state, action) => {
     return {
       ...state,
       user: action.payload,
@@ -85,7 +85,6 @@ const initialState = {
   user: {
     name: '',
     password: '',
-    token: ''
   }
 }
 export default function authReducer (state = initialState, action) {
