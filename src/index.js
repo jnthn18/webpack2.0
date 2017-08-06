@@ -1,11 +1,14 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
-import store from 'store';
+import { ConnectedRouter } from 'react-router-redux'
 
-import App from './components/App'
+import configureStore, { history } from './store'
+import App from './components/App';
+
+const store = configureStore()
 
 // Now you can dispatch navigation actions from anywhere!
 // store.dispatch(push('/foo'))
@@ -13,11 +16,11 @@ import App from './components/App'
 const renderApp = Component => {
   render(
     <Provider store={store}>
-      <Router>
+      <ConnectedRouter history={history}>
         <AppContainer>
           <Component />
         </AppContainer>
-      </Router>
+      </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
   );

@@ -13,6 +13,7 @@ module.exports = {
       'react-redux',
       'react-hot-loader',
       'react-router-dom',
+      'react-router-redux',
       'redux-thunk',
       'redux-logger',
       'reselect',

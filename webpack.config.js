@@ -31,17 +31,8 @@ const stats = {
   },
 };
 
-// const DashboardPluginConfig = new DashboardPlugin();
-// const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-//   template: 'index.html',
-//   filename: 'index.html',
-//   inject: 'body'
-// });
-// const ExtractTextPluginConfig = new ExtractTextPlugin('[name].bundle.css');
-
 let config = (env = {}) => {
 	const nodeEnv = env && env.prod ? 'production' : 'development';
-	console.log(nodeEnv);
 	const isProd = nodeEnv === 'production';
 
 	const serviceWorkerBuild = env && env.sw;
@@ -146,14 +137,12 @@ let config = (env = {}) => {
 
       // load DLL files
       /* eslint-disable global-require */
-      // new webpack.DllReferencePlugin({ context: __dirname, manifest: require('./dll/d3-manifest.json')}),
       new webpack.DllReferencePlugin({ context: __dirname, manifest: require('./dll/react-manifest.json')}),
       new webpack.DllReferencePlugin({ context: __dirname, manifest: require('./dll/reactContrib-manifest.json')}),
       /* eslint-enable global-require */
 
       // make DLL assets available for the app to download
       new AddAssetHtmlPlugin([
-        // { filepath: require.resolve('./dll/d3.dll.js') }, 
         { filepath: require.resolve('./dll/react.dll.js') }, 
         { filepath: require.resolve('./dll/reactContrib.dll.js') }, 
       ]),
