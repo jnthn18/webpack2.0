@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import Login from '../Login/Login'
-import Restricted from '../Restricted/Restricted'
+import Login from '../routes/Login/Login'
+import Restricted from '../routes/Restricted/Restricted'
 
 const Main = () => (
 	<main>

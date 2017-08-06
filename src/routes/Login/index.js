@@ -1,7 +1,7 @@
 import Login from './Login'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getLogin } from '../reducers'
+import { getLogin } from '../../reducers'
 
 const mapStateToProps = (state, props) => {
 	return {
