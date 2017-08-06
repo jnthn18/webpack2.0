@@ -1,20 +1,34 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { Route } from 'react-router'
-import { ConnectedRouter, push } from 'react-router-redux'
-import configureStore, { history } from './store/configureStore'
-import Home from './Home'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+// import { BrowserRouter as Router } from 'react-router-dom';
+import { AppContainer } from 'react-hot-loader';
+import { ConnectedRouter } from 'react-router-redux'
+
+import configureStore, { history } from './store'
+import App from './components/App';
 
 const store = configureStore()
 
-render(
-	<Provider store={store}>
-		<ConnectedRouter history={history}>
-			<div>
-				<Route exact path="/" component={Home} />
-			</div>
-		</ConnectedRouter>
-	</Provider>, 
-	document.getElementById('root')
-)
+// Now you can dispatch navigation actions from anywhere!
+// store.dispatch(push('/foo'))
+
+const renderApp = Component => {
+  render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <AppContainer>
+          <Component />
+        </AppContainer>
+      </ConnectedRouter>
+    </Provider>,
+    document.getElementById('root')
+  );
+};
+
+renderApp(App);
+
+// Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('components/App', () => renderApp(App));
+}
