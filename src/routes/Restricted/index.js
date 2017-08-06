@@ -1,11 +1,11 @@
 import Restricted from './Restricted'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getRestricted } from '../../reducers'
+import { getAuth } from '../../reducers'
 
 const mapStateToProps = (state, props) => {
 	return {
-		...getRestricted(state),
+		...getAuth(state),
 	}
 }
 

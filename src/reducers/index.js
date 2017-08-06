@@ -1,13 +1,8 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import login, * as fromLogin from './loginReducer'
-import restricted, * as fromRestricted from './restrictedReducer'
+import authReducer from '../routes/Login/modules/login'
 
 export default combineReducers({
-	login,
-  restricted,
+	authReducer,
   router: routerReducer
 })
-
-export const getLogin = ({login}) => login
-export const getRestricted = ({restricted}) => restricted

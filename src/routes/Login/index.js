@@ -1,12 +1,28 @@
-import Login from './Login'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { getLogin } from '../../reducers'
+// import { injectReducer } from '../../store/reducers'
 
-const mapStateToProps = (state, props) => {
-	return {
-		...getLogin(state),
-	}
-}
+// export default (store) => ({
+//   path : 'login',
+//   /*  Async getComponent is only invoked when route matches   */
+//   getComponent (nextState, cb) {
+//     /*  Webpack - use 'require.ensure' to create a split point
+//         and embed an async module loader (jsonp) when bundling   */
+//     require.ensure([], (require) => {
+//         Webpack - use require callback to define
+//           dependencies for bundling   
+//       const Login = require('./containers/LoginContainer').default
+//       const reducer = require('./modules/login').default
 
-export default withRouter(connect(mapStateToProps)(Login))
+//       /*  Add the reducer to the store on key 'counter'  */
+//       injectReducer(store, { key: 'counter', reducer })
+
+//       /*  Return getComponent   */
+//       cb(null, Counter)
+
+//     /* Webpack named bundle   */
+//     }, 'login')
+//   }
+// })
+
+import Login from './containers/LoginContainer'
+
+export default Login
