@@ -4,13 +4,8 @@ import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import { ConnectedRouter } from 'react-router-redux'
 
-import configureStore, { history } from './store'
-import App from './components/App';
-
-const store = configureStore()
-
-// Now you can dispatch navigation actions from anywhere!
-// store.dispatch(push('/foo'))
+import store, { history } from './store'
+import App from 'containers/App';
 
 const renderApp = Component => {
   render(
@@ -29,5 +24,5 @@ renderApp(App);
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('components/App', () => renderApp(App));
+  module.hot.accept('containers/App', () => renderApp(App));
 }

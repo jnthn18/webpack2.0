@@ -1,28 +1,12 @@
-// import { injectReducer } from '../../store/reducers'
+import React, { Component } from 'react';
+import Chunk from 'components/Chunk';
 
-// export default (store) => ({
-//   path : 'login',
-//   /*  Async getComponent is only invoked when route matches   */
-//   getComponent (nextState, cb) {
-//     /*  Webpack - use 'require.ensure' to create a split point
-//         and embed an async module loader (jsonp) when bundling   */
-//     require.ensure([], (require) => {
-//         Webpack - use require callback to define
-//           dependencies for bundling   
-//       const Login = require('./containers/LoginContainer').default
-//       const reducer = require('./modules/login').default
+const loadLoginContainer = () => import('routes/Login/containers/LoginContainer' /* webpackChunkName: "login" */);
 
-//       /*  Add the reducer to the store on key 'counter'  */
-//       injectReducer(store, { key: 'counter', reducer })
+class Login extends Component {
+  render() {
+    return <Chunk load={loadLoginContainer} />;
+  }
+}
 
-//       /*  Return getComponent   */
-//       cb(null, Counter)
-
-//     /* Webpack named bundle   */
-//     }, 'login')
-//   }
-// })
-
-import Login from './containers/LoginContainer'
-
-export default Login
+export default Login;

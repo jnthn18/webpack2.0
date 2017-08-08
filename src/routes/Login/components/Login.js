@@ -7,7 +7,7 @@ export const Login = (props) => {
 		const name = e.target.name.value
 		const password = e.target.password.value
 		
-		props.loginUser({name: name, password: password})
+		// props.loginUser({name: name, password: password})
 	}
 
 	return (
@@ -27,7 +27,7 @@ export const Login = (props) => {
 }
 
 Login.propTypes = {
-	loginUser: React.PropTypes.func.isRequired
+	// loginUser: React.PropTypes.func.isRequired
 }
 
 export default Login
